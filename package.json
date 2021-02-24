@@ -1,0 +1,39 @@
+{
+  "name": "partner-pulse",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha",
+    "testci": "mocha --exit",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.828.0",
+    "bcrypt": "^5.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "glob": "^7.1.6",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.11.7",
+    "morgan": "~1.9.1",
+    "request": "^2.88.2",
+    "require": "^2.4.20",
+    "requirejs": "^2.3.6",
+    "short-uuid": "^4.1.0",
+    "simple-encryptor": "^4.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
+  }
+}

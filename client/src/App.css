@@ -1,0 +1,30 @@
+.site-content {
+  margin-top: 75px;
+}
+
+.page {
+  padding: 24px;
+  margin-left: 12px;
+}
+
+.step-wrapper {
+  position: relative;
+}
+
+.step-i-bg {
+  position: absolute;
+  background-color: #3274d8;
+  border-radius: 50%;
+  padding: 5px;
+  font-weight: 600;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  color: white;
+  margin-right: 6px;
+}
+
+.game-list-item {
+  max-width: 550px;
+}
