@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const shortUUID = require('short-uuid');
+const { Route53Resolver } = require('aws-sdk');
 
 const accessTokenSecret = process.env.access_secret || 'jwt-sign-secret-2020';
 
@@ -72,6 +73,10 @@ exports.checkLogin = async function(req, res) {
 
     const userFilter = {'email': email};
     const user = await User.findOne(userFilter).exec();
+    if (!user) {
+        res.status(400)
+        return;
+    }
     const match = await bcrypt.compare(password, user.password);
 
     if(match) {

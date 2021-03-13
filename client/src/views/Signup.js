@@ -36,7 +36,7 @@ function Signup(){
 
     return (
         <div>
-            <section>
+            <section style={{marginTop: 80}}>
 
                 <div className="column is-three-fifths is-offset-one-fifth">
                     <h1 className="title">Register to start using SimplyBoards</h1>

@@ -34,7 +34,7 @@ app.use('/api/auth', authRouter);
 /* 
   Add user id to all other requests
 */
-app.use(function(req, res, next) {
+app.use('/api', function(req, res, next) {
   const token = req.headers['slb-token'];
   jwt.verify(token, accessTokenSecret, function(err, decodedToken) {
     if(err) { /* handle token err */ 
@@ -52,6 +52,11 @@ app.use(function(req, res, next) {
 app.use('/api/users', usersRouter);
 app.use('/api/games', gamesRouter);
 app.use('/api/scores', scoresRouter);
+
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
