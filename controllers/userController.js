@@ -84,7 +84,7 @@ exports.checkLogin = async function(req, res) {
         console.log("Successful log in.")
         res.status(200).json({token: accessToken, user: user.toJSON.data});
     } else {
-        res.sendStatus(401);
+        res.sendStatus(401).json({error: "Incorrect useeername or password."});
     }
 }
 

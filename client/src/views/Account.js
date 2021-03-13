@@ -82,30 +82,32 @@ function AccountPage() {
                 </div>
             )
         } else if (type === 'basic') {
-            <div>
-                <span className="tag is-success is-light is-large">Basic Account</span>
+            return (
+                <div>
+                    <span className="tag is-success is-light is-large">Basic Account</span>
 
-                <div className="box">
-                        <div className="content">
-                            <ul>
-                                <li>
-                                    <FontAwesomeIcon icon={faCheckCircle} color="#36B37E"></FontAwesomeIcon> One online leaderboard
-                                    <p>Upgrade to premium for unlimited leaderboards</p>
-                                </li>
-                                <li>
-                                    <FontAwesomeIcon icon={faCheckCircle} color="#36B37E"></FontAwesomeIcon> Up to 50 saved scores
-                                    <p>Upgrade to premium for unlimited saved scores</p>
-                                </li>
-                                <li>
-                                    <FontAwesomeIcon icon={faCheckCircle} color="#36B37E"></FontAwesomeIcon> Limited leaderboard customization options
-                                    <p>Upgrade to premium for full leaderboard customization options</p>
-                                </li>
-                            </ul>
+                    <div className="box">
+                            <div className="content">
+                                <ul>
+                                    <li>
+                                        <FontAwesomeIcon icon={faCheckCircle} color="#36B37E"></FontAwesomeIcon> One online leaderboard
+                                        <p>Upgrade to premium for unlimited leaderboards</p>
+                                    </li>
+                                    <li>
+                                        <FontAwesomeIcon icon={faCheckCircle} color="#36B37E"></FontAwesomeIcon> Up to 50 saved scores
+                                        <p>Upgrade to premium for unlimited saved scores</p>
+                                    </li>
+                                    <li>
+                                        <FontAwesomeIcon icon={faCheckCircle} color="#36B37E"></FontAwesomeIcon> Limited leaderboard customization options
+                                        <p>Upgrade to premium for full leaderboard customization options</p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                <Link to="/account/upgrade"><button className="button is-succeess">Upgrade to Premium</button></Link>
-            </div>
+                    <Link to="/account/upgrade"><button className="button is-succeess">Upgrade to Premium</button></Link>
+                </div>
+            );
         }
     }
 

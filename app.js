@@ -35,6 +35,7 @@ app.use('/api/auth', authRouter);
   Add user id to all other requests
 */
 app.use('/api', function(req, res, next) {
+  console.log("Verifying user is logged in with token...");
   const token = req.headers['slb-token'];
   jwt.verify(token, accessTokenSecret, function(err, decodedToken) {
     if(err) { /* handle token err */ 
