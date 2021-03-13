@@ -9,7 +9,6 @@ const User = require('../models/User');
 exports.getUsersGames = async function(req, res, next) {
     const userId = req.userId;
     const user = await User.findById(userId);
-    console.log('Getting games for user: ' + user.email);
     const games = await Game.find({owner: user._id}).exec();
     res.json({
         items: games.map(g => g.toJSON.data),
@@ -38,11 +37,11 @@ async function getNewGame_id() {
 }
 
 exports.createGame = async function(req, res, next) {
-    const { name, config } = req.body;
+    const { name, desc, config } = req.body;
     const owner = ObjectId(req.userId);
     const game_id = await getNewGame_id();
     console.log('creating new game for user: ' + req.userId + ' with id: ' + game_id);
-    const game = new Game({name, game_id, owner, config});
+    const game = new Game({name, desc, game_id, owner, config});
     await game.save();
     console.log('New game created.');
     res.json(game.toJSON.data);

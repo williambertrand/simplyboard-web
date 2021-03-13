@@ -9,7 +9,7 @@ function NavBar() {
         <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation" style={{borderBottom: "1px solid #eee"}}>
 
             <div className="navbar-brand">
-                <a className="navbar-item">
+                <a className="navbar-item" href="/dashboard">
                     <p className="has-text-weight-semibold is-size-5">SimplyLeaderBoards</p>
                 </a>
                 <a 

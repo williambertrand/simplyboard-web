@@ -46,7 +46,9 @@ function AccountPage() {
 
 
     const renderTypeInfo = (type) => {
-        const trialRemaining = "TODO";
+        const today = moment();
+        const endDate  = moment(account.trialEndDate);
+        const trialRemaining = endDate.diff(today, 'days')
         if (type === 'premium' || type === 'trial') {
             return (
                 <div>

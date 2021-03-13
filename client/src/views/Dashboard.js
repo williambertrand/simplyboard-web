@@ -79,7 +79,7 @@ function Dashboard() {
                         <button className="button is-success is-rounded">New LeaderBoard</button>
                     </Link>
                     {user.type === 'trial' && (
-                        <p className="is-hint mt-3">Your free trial includes unlimited game leaderboards. If you downgrade to a Free Account at the end of your trial you will be forced to delete any extra leaderboards above the free tier limit of <strong>1</strong>.</p>
+                        <p className="is-hint mt-3">Your free trial includes unlimited game leaderboards. If you downgrade to a Free Account at the end of your trial you will need to delete any extra leaderboards above the free tier limit of <strong>1</strong>.</p>
                     )}
                 </div>
             );

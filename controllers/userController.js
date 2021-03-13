@@ -42,13 +42,16 @@ exports.createUser = async function(req, res, next) {
 
     const hashed = await bcrypt.hash(password, saltRounds);
     const keey = await generateAccessKey();
+    let endDate = new Date();
+    endDate.setDate(endDate.getDate() + 30); // 30 day trial
     const userData = {
         name: name,
         username: username,
         email: email,
         password: hashed,
-        accountType: 'basic',
+        accountType: 'trial',
         accessKey: keey,
+        trialEndDate: endDate
     }
 
     const newUser = new User(userData);

@@ -10,6 +10,7 @@ class User {
                 email: this.email,
                 name: this.name,
                 type: this.accountType,
+                trialEndDate: this.trialEndDate,
                 createdAt: this.createdAt, 
                 accessKey: this.accessKey,
             }
@@ -24,6 +25,8 @@ const UserSchema = new Schema({
     accessKey: {type: Schema.Types.String, unique: true, required: true},
     accountType: {type: Schema.Types.String, required: true},
     createdAt: {type: Date, default: Date.now},
+    trialStart: {type: Date, default: Date.now},
+    trialEndDate: {type: Date, default: Date.now},
 });
 
 UserSchema.loadClass(User);

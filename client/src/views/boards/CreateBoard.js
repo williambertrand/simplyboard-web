@@ -99,11 +99,12 @@ function CreateBoardView() {
 
     const submit = () => {
         const createBoardUrl = '/api/games';
+        console.log("submitting with desc: " + gameDesc);
         const body = {
             name: gameName,
             desc: gameDesc,
             config: {
-                backgroundColor: textColor.hex,
+                backgroundColor: backgroundColor.hex,
                 textColor: textColor.hex,
                 displayCount,
             }
@@ -243,6 +244,10 @@ function CreateBoardView() {
                                 <tr>
                                     <td className="is-vcentered">Game Name:</td>
                                     <td className="is-vcentered">{gameName}</td>
+                                </tr>
+                                <tr>
+                                    <td className="is-vcentered">Description:</td>
+                                    <td className="is-vcentered">{gameDesc}</td>
                                 </tr>
                                 <tr>
                                     <td className="is-vcentered">Background:</td>
