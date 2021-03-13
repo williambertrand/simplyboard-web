@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../redux/actions/user';
 
@@ -81,4 +81,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default withRouter(Login);

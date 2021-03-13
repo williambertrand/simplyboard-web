@@ -12,6 +12,7 @@ function login(email, password, from) {
             .then(
                 user => { 
                     dispatch(success(user));
+                    console.log("User login success.")
                     history.push(from);
                 },
                 error => {

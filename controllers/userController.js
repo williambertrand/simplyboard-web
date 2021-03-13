@@ -78,11 +78,11 @@ exports.checkLogin = async function(req, res) {
         return;
     }
     const match = await bcrypt.compare(password, user.password);
-
     if(match) {
         const accessToken = jwt.sign({ userId: String(user._id) }, accessTokenSecret);
         //Succes!
-        res.json({token: accessToken, user: user.toJSON.data});
+        console.log("Successful log in.")
+        res.status(200).json({token: accessToken, user: user.toJSON.data});
     } else {
         res.sendStatus(401);
     }

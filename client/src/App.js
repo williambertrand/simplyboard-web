@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router forceRefresh={true}>
       <div>
         {/* Routes */}
         <Switch>
