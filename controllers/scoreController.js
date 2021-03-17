@@ -8,7 +8,7 @@ exports.listScoresForGame = async function(req, res, next) {
     const queryData = {game: game_ref._id}
     const scoreList = await Score.find(queryData).sort({value: -1}).exec();
     const scoreItems = scoreList.map(item => {
-        return item.toJSON;
+        return item.toJSON.data;
     })
     res.json({
         scores: scoreItems,
