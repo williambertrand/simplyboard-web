@@ -31,4 +31,13 @@ const UserSchema = new Schema({
 
 UserSchema.loadClass(User);
 const model = mongoose.model('User', UserSchema);
+
+
+// Keys: slb_
+model.loadFromKeys = async function(keys) {
+    const { slb_access, slb_secret } = keys;
+    const user = await model.findOne({ accessKey: slb_access }).exec();
+    return user._id;
+}
+
 module.exports = model;

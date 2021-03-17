@@ -7,7 +7,8 @@ class Score {
         return {
             data: {
                 id: this._id,
-                name: this.name,
+                display_name: this.display_name,
+                position: this.position,
                 value: this.value
             }
         }
@@ -15,8 +16,9 @@ class Score {
 }
 
 const ScoreSchema = new Schema({
-    name: String,
+    display_name: String,
     value: Number,
+    position: Number,
     game: { type: Schema.Types.ObjectId, ref: 'Game' },
 });
 

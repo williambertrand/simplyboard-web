@@ -12,6 +12,9 @@ const scoresRouter = require('./routes/scores');
 
 //Initiallize mongodb connection before starting app
 var db = require('./db');
+const { reverse } = require('lodash');
+
+const User = require('./models/User');
 
 var app = express();
 
@@ -34,20 +37,31 @@ app.use('/api/auth', authRouter);
 /* 
   Add user id to all other requests
 */
-app.use('/api', function(req, res, next) {
-  console.log("Verifying user is logged in with token...");
+app.use('/api', async function(req, res, next) {
   const token = req.headers['slb-token'];
-  jwt.verify(token, accessTokenSecret, function(err, decodedToken) {
-    if(err) { /* handle token err */ 
-      console.error(err)
-      next()
+  if(!token) {
+    const { slb_access, slb_secret } = req.headers;
+    if( !slb_access ) {
+      throw new Error('No auth provided')
     }
     else {
-     req.userId = decodedToken.userId;   // Add to req object
-     console.log('req for user: ' + req.userId);
-     next();
+      req.userId = await User.loadFromKeys({ slb_access, slb_secret });
+      console.log('req for user using access key: ' + req.userId);
+      next();
     }
-  });
+  } else {
+    jwt.verify(token, accessTokenSecret, function(err, decodedToken) {
+      if(err) { /* handle token err */ 
+        console.error(err)
+        next()
+      }
+      else {
+       req.userId = decodedToken.userId;   // Add to req object
+       console.log('req for user: ' + req.userId);
+       next();
+      }
+    });
+  }
  });
 
 app.use('/api/users', usersRouter);
@@ -69,10 +83,10 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  console.error(err)
+  // render the error page 
+  res.status(err.status || 500).send('Error with your request!');
+  // res.render('error');
 });
 
 module.exports = app;

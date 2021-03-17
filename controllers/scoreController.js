@@ -1,9 +1,13 @@
 const Score = require('../models/Score');
+const Game = require('../models/Game');
 
 
 
 exports.listScoresForGame = async function(req, res, next) {
-    const scoreList = await Daily.find(queryData).exec();
+    const { gameId } = req.params;
+    const game_ref = await Game.findOne({game_id: gameId});
+    const queryData = {game_id: game_ref._id}
+    const scoreList = await Score.find(queryData).exec();
     const scoreItems = scoreList.map(item => {
         return item.toJSON;
     })
