@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use(express.static("client/build"));
 
 
-app.use('/api/auth', authRouter);
+app.use('/api/v1/auth', authRouter);
 
 /* 
   Add user id to all other requests
@@ -64,9 +64,9 @@ app.use('/api', async function(req, res, next) {
   }
  });
 
-app.use('/api/users', usersRouter);
-app.use('/api/games', gamesRouter);
-app.use('/api/scores', scoresRouter);
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/games', gamesRouter);
+app.use('/api/v1/scores', scoresRouter);
 
 
 app.get('/*', function (req, res) {

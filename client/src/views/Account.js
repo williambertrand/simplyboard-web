@@ -19,7 +19,7 @@ function AccountPage() {
     const [coppied, setCoppied] = useState(false);
 
     const getAccountInfo = () => {
-        axios.get(`/api/users/info`, {headers: authHeader()})
+        axios.get(`/api/v1/users/info`, {headers: authHeader()})
             .then(response => {
                 setAccount(response.data);
             })

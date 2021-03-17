@@ -14,7 +14,7 @@ function Dashboard() {
 
     const getGames = () => {
         setLoading(true);
-        axios.get(`/api/games`, {headers: authHeader()})
+        axios.get(`/api/v1/games`, {headers: authHeader()})
             .then(response => {
                 setGames(response.data.items);
                 setLoading(false);

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { authHeader } from '../../helpers/AuthHeader';
+import { config } from '../../config';
 
 
 const COLORS = ['#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7', '#9900EF', '#bbb', '#eee', '#fff', '#000000']
@@ -98,8 +99,7 @@ function CreateBoardView() {
     }
 
     const submit = () => {
-        const createBoardUrl = '/api/games';
-        console.log("submitting with desc: " + gameDesc);
+        const createBoardUrl = `${config.apiUrl}/games`;
         const body = {
             name: gameName,
             desc: gameDesc,
