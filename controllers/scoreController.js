@@ -11,7 +11,7 @@ exports.listScoresForGame = async function(req, res, next) {
         return item.toJSON;
     })
     res.json({
-        items: scoreItems,
+        scores: scoreItems,
         count: scoreItems.length,
     });
 }
