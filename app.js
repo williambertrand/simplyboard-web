@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var cors = require('cors')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -13,11 +14,12 @@ const statsRouter = require('./routes/stats');
 
 //Initiallize mongodb connection before starting app
 var db = require('./db');
-const { reverse } = require('lodash');
 
 const User = require('./models/User');
 
 var app = express();
+
+app.use(cors())
 
 const accessTokenSecret = process.env.access_secret || 'jwt-sign-secret-2020';
 
