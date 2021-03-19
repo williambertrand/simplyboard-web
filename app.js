@@ -9,6 +9,7 @@ const usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 const gamesRouter = require('./routes/games.js');
 const scoresRouter = require('./routes/scores');
+const statsRouter = require('./routes/stats');
 
 //Initiallize mongodb connection before starting app
 var db = require('./db');
@@ -67,6 +68,7 @@ app.use('/api', async function(req, res, next) {
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/games', gamesRouter);
 app.use('/api/v1/scores', scoresRouter);
+app.use('/api/v1/stats', statsRouter);
 
 
 app.get('/*', function (req, res) {
