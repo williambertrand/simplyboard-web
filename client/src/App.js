@@ -22,6 +22,7 @@ import LayoutUnAuth from './components/layout/LayoutUnAuth';
 import Splash from './views/Splash';
 import Login from './views/Login';
 import Signup from './views/Signup';
+import RegisterSuccess from './views/RegisterSuccess';
 
 // Pages / Views for logged in users
 import CreateBoardView from './views/boards/CreateBoard';
@@ -47,6 +48,10 @@ function App() {
           <AppRoute exact path="/register" layout={LayoutUnAuth}>
             <Signup />
           </AppRoute>
+          <AppRoute exact path="/registered" layout={LayoutUnAuth}>
+            <RegisterSuccess />
+          </AppRoute>
+
           <AppRoute exact path="/login" layout={LayoutUnAuth}>
             <Login />
           </AppRoute>

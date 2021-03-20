@@ -27,6 +27,7 @@ const UserSchema = new Schema({
     createdAt: {type: Date, default: Date.now},
     trialStart: {type: Date, default: Date.now},
     trialEndDate: {type: Date, default: Date.now},
+    isOnWaitList: Boolean,
 });
 
 UserSchema.loadClass(User);

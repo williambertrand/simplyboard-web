@@ -33,12 +33,21 @@ async function generateAccessKey() {
 
 exports.createUser = async function(req, res, next) {
 
+    const isOnWaitList = true;
+
     const {
         name,
         email,
         username,
-        password
     } = req.body;
+
+    let password;
+    if (isOnWaitList) {
+        password = "temp-pass"
+    }
+    else {
+        password = req.body.password
+    }
 
     const hashed = await bcrypt.hash(password, saltRounds);
     const keey = await generateAccessKey();
@@ -51,7 +60,8 @@ exports.createUser = async function(req, res, next) {
         password: hashed,
         accountType: 'trial',
         accessKey: keey,
-        trialEndDate: endDate
+        trialEndDate: endDate,
+        isOnWaitList
     }
 
     const newUser = new User(userData);

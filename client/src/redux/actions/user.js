@@ -42,7 +42,7 @@ function register(user) {
             .then(
                 user => { 
                     dispatch(success());
-                    history.push('/dashboard');
+                    history.push('/registered');
                     // dispatch(alertActions.success('Registration successful'));
                 },
                 error => {
