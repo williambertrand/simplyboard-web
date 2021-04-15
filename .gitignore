@@ -2,3 +2,5 @@ node_modules/
 client/node_modules/
 build/Release
 client/build/
+
+.env

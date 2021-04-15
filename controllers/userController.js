@@ -3,6 +3,7 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const shortUUID = require('short-uuid');
 const { Route53Resolver } = require('aws-sdk');
+const { newWaitlistSignupEmail } = require('../services/email');
 
 const accessTokenSecret = process.env.access_secret || 'jwt-sign-secret-2020';
 
@@ -71,6 +72,7 @@ exports.createUser = async function(req, res, next) {
         const accessToken = jwt.sign({ userId: String(newUser._id) }, accessTokenSecret);
         //Succes!
         res.json({token: accessToken, user: newUser.toJSON.data});
+        newWaitlistSignupEmail()
     }
     else {
         res.sendStatus(400);
