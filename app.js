@@ -11,6 +11,7 @@ var authRouter = require('./routes/auth');
 const gamesRouter = require('./routes/games.js');
 const scoresRouter = require('./routes/scores');
 const statsRouter = require('./routes/stats');
+const roomsRouter = require('./routes/rooms');
 
 //Initiallize mongodb connection before starting app
 var db = require('./db');
@@ -34,6 +35,10 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static("client/build"));
 
+
+app.use('/api/v1/health', function(req, res){
+  res.status(200).json({'status': 'healthy'});
+});
 
 app.use('/api/v1/auth', authRouter);
 
@@ -71,6 +76,7 @@ app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/games', gamesRouter);
 app.use('/api/v1/scores', scoresRouter);
 app.use('/api/v1/stats', statsRouter);
+app.use('/api/v1/rooms', roomsRouter);
 
 
 app.get('/*', function (req, res) {

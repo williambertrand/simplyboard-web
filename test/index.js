@@ -4,11 +4,12 @@ const should = chai.should();
 const chaiHttp = require('chai-http');
 const server = require('express')
 const constants = require('../constants');
+var mongoose = require('mongoose');
 
 chai.use(chaiHttp);
 
 describe('Index', function() {
-
+    after(() => mongoose.disconnect());
     // Successful routing of index page
     it('should render the index on /', function() {
         chai.request(server).get('/')
