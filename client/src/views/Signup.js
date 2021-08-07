@@ -39,9 +39,8 @@ function Signup(){
             <section style={{marginTop: 80}}>
 
                 <div className="column is-three-fifths is-offset-one-fifth">
-                    <h1 className="title">Join the SimplyBoards waitlist</h1>
-                    <p>SimplyBoards is still a work in progress, so w're limiting the number of users for the Beta while we work out all the kinks! We'll send you an email when we're ready to have you log in to our account. Thank you for your patience!</p>
-                </div>
+                    <h1 className="title">Start using SimplyBoards</h1>
+                </div> 
 
                 <div className="column is-three-fifths is-offset-one-fifth">
                     <div className="field">
@@ -79,7 +78,7 @@ function Signup(){
                         {/* <p className="help is-danger">This email is invalid</p> */}
                     </div>
 
-                    {/* <div className="field">
+                    <div className="field">
                         <label className="label">Password</label>
                         <div className="control has-icons-left has-icons-right">
                             <input 
@@ -95,15 +94,15 @@ function Signup(){
                                 <i className="fas fa-exclamation-triangle"></i>
                             </span>
                         </div>
-                    </div> */}
+                    </div>
 
-                    {/* <div className="field">
+                    <div className="field">
                         <div className="control">
                             <label className="checkbox">
                                 <input type="checkbox" /> I agree to the <a href="#">terms and conditions</a>
                             </label>
                         </div>
-                    </div> */}
+                    </div>
 
                     <div className="field">
                         <p className="help">We will <strong>not</strong> give your name or email away for any reason.</p>

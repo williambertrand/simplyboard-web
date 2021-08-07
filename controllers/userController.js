@@ -34,7 +34,7 @@ async function generateAccessKey() {
 
 exports.createUser = async function(req, res, next) {
 
-    const isOnWaitList = true;
+    const isOnWaitList = false;
 
     const {
         name,

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --exit",
+    "test": "NODE_ENV=test mocha --exit -timeout 10000",
     "testci": "mocha --exit",
     "devstart": "nodemon ./bin/www",
     "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart",
@@ -26,6 +26,7 @@
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "mongoose": "^5.11.7",
     "morgan": "~1.9.1",
     "request": "^2.88.2",
@@ -35,6 +36,12 @@
     "simple-encryptor": "^4.0.0"
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6"
   }

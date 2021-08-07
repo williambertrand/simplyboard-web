@@ -1,3 +1,4 @@
+const moment = require('moment');
 const Room = require('../models/Room');
 const Game = require('../models/Game');
 
@@ -26,7 +27,7 @@ exports.createRoomForGame = async function(req, res, next) {
     const newRoom = new Room({game: game_ref._id, display_name, host: hostIp, lastPingAt: Date() });
     await newRoom.save();
 
-    res.json(newScore.toJSON);
+    res.json(newRoom.toJSON);
 }
 
 exports.pingRoom = async function(req, res) {
@@ -38,5 +39,9 @@ exports.pingRoom = async function(req, res) {
 }
 
 exports.endInactiveGames = async function(req, res) {
-    //TODO
+    const lastPingCutoff = moment().subtract(10, 'minutes');
+    console.log("CUT OFF: ", lastPingCutoff)
+    // Set any room that has not pinged in last 10 minutes to inactive
+    await Room.updateMany({ status: 'active', lastPingAt: {$lt: lastPingCutoff }}, {status: 'ended', endedAt: new Date()});
+    res.sendStatus(200);
 }

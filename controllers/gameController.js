@@ -23,7 +23,7 @@ exports.getGame = async function(req, res, next) {
 }
 
 // Generate a short game_id to be used by 
-async function getNewGame_id() {
+const getNewGame_id = async function () {
     let exists = true;
     let attempts = 0;
     let x;
