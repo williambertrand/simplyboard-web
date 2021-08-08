@@ -15,6 +15,7 @@ class Room {
                 display_name: this.display_name,
                 game: this.game._id,
                 host: this.host,
+                port: this.port,
                 lastPingAt: this.lastPingAt,
                 status: this.status,
             }
@@ -26,6 +27,7 @@ const RoomSchema = new Schema({
     display_name: String,
     game: { type: Schema.Types.ObjectId, ref: 'Game' },
     host: String,
+    port: String,
     lastPingAt: Date,
     status: {
         type: String,

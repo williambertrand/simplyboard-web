@@ -20,11 +20,12 @@ exports.createRoomForGame = async function(req, res, next) {
     const { gameId } = req.params;
     const {
         display_name,
-        hostIp
+        hostIp,
+        port,
     } = req.body;
 
     const game_ref = await Game.findOne({ game_id: gameId });
-    const newRoom = new Room({game: game_ref._id, display_name, host: hostIp, lastPingAt: Date() });
+    const newRoom = new Room({game: game_ref._id, display_name, host: hostIp, port, lastPingAt: new Date() });
     await newRoom.save();
 
     res.json(newRoom.toJSON);
