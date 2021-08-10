@@ -92,6 +92,9 @@ exports.checkLogin = async function(req, res) {
         res.status(400)
         return;
     }
+    const hashed = await bcrypt.hash(password, saltRounds);
+    console.log("new hashed Password:");
+    console.log(hashed);
     const match = await bcrypt.compare(password, user.password);
     if(match) {
         const accessToken = jwt.sign({ userId: String(user._id) }, accessTokenSecret);
@@ -99,7 +102,7 @@ exports.checkLogin = async function(req, res) {
         console.log("Successful log in.")
         res.status(200).json({token: accessToken, user: user.toJSON.data});
     } else {
-        res.sendStatus(401).json({error: "Incorrect useeername or password."});
+        res.status(401).json({error: "Incorrect username or password."});
     }
 }
 
