@@ -1,5 +1,6 @@
 # simplyboard-web
 https://simplyleaderboards.web.app/
+
 Simple leaderboard service Web app and API. Use it to create, update, and view leaderboards for unity games.
 
 ### Overview
